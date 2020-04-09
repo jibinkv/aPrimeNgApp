@@ -1,0 +1,25 @@
+<h3>Frozen Columns</h3>
+<p-table [columns]="scrollableCols" [frozenColumns]="frozenCols" [value]="cars" [scrollable]="true" scrollHeight="200px" frozenWidth="200px" unFrozenWidth="600px">
+    <ng-template pTemplate="colgroup" let-columns>
+        <colgroup>
+            <col *ngFor="let col of columns" style="width:200px">
+        </colgroup>
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+            <td *ngFor="let col of columns">
+                <div *ngIf="col.field == 'vin'"><a>{{rowData[col.field]}}</a></div>
+                {{rowData[col.field]}}
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<div><br /><br /><br /><br /><br />Col1: {{col1}}</div>
